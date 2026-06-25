@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relationship Check-In v3</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Relationship Check-In</h1>
+      <p>A private alignment tool for Friday’s conversation.</p>
+    </header>
+
+    <section id="home" class="card">
+      <h2>Who are you?</h2>
+      <p>Choose your name. Your draft will be saved automatically.</p>
+
+      <div class="person-grid">
+        <button type="button" onclick="selectPerson('Jingyi')">❤️ Jingyi</button>
+        <button type="button" onclick="selectPerson('Rodrigo')">❤️ Rodrigo</button>
+      </div>
+
+      <div id="homeStatus" class="status-grid"></div>
+
+      <button type="button" class="secondary" onclick="showDashboard()">View Dashboard</button>
+    </section>
+
+    <section id="questionnaire" class="card hidden">
+      <div class="topbar">
+        <button type="button" class="secondary small-btn" onclick="goHome()">← Home</button>
+        <button type="button" class="secondary small-btn" onclick="manualSaveDraft()">💾 Save Draft</button>
+        <span id="saveStatus" class="muted">Not saved yet.</span>
+      </div>
+
+      <h2 id="personTitle"></h2>
+
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="progressText">Question 1 / 14</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+      </div>
+
+      <section id="questionCard" class="question"></section>
+
+      <div class="nav-row">
+        <button type="button" class="secondary" onclick="prevQuestion()">← Previous</button>
+        <button type="button" onclick="nextQuestion()">Next →</button>
+      </div>
+
+      <section class="question final-box hidden" id="finalBox">
+        <h3>Final thoughts</h3>
+        <p>Anything else you want to say before Friday?</p>
+        <textarea id="finalThoughts" placeholder="Write your final thoughts here..."></textarea>
+        <button type="button" onclick="submitAnswers()">Submit Answers</button>
+      </section>
+    </section>
+
+    <section id="dashboard" class="card hidden">
+      <div class="topbar">
+        <button type="button" class="secondary small-btn" onclick="goHome()">← Home</button>
+        <button type="button" onclick="loadDashboard()">Refresh</button>
+      </div>
+
+      <h2>Dashboard</h2>
+      <div id="dashboardStatus"></div>
+      <div id="dashboardSummary"></div>
+      <div id="dashboardCompare"></div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
