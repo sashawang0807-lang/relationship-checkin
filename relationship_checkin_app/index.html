@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relationship Check-In</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Relationship Check-In</h1>
+      <p>This is not a test. It is a way to be honest before Friday.</p>
+    </header>
+
+    <section class="card" id="intro">
+      <h2>Before you start</h2>
+      <p>Please answer directly. Each question has three parts:</p>
+      <ul>
+        <li>agree / disagree / need discussion</li>
+        <li>your written opinion</li>
+        <li>what you are willing to do in practice</li>
+      </ul>
+
+      <label>Your name</label>
+      <input id="name" type="text" placeholder="Your name" />
+
+      <label>Access code</label>
+      <input id="code" type="password" placeholder="Shared code" />
+
+      <button onclick="startForm()">Start</button>
+      <p class="hint">Use the same access code for both people. It separates your answers from anyone else’s.</p>
+    </section>
+
+    <form class="card hidden" id="form">
+      <div id="questions"></div>
+
+      <label>Final thoughts</label>
+      <textarea id="finalThoughts" placeholder="Anything else you want to say?"></textarea>
+
+      <button type="submit">Submit Answers</button>
+      <p id="status"></p>
+    </form>
+
+    <section class="card hidden" id="admin">
+      <h2>View answers</h2>
+      <p>Enter the same access code to view submitted answers.</p>
+      <input id="viewCode" type="password" placeholder="Access code" />
+      <button onclick="loadAnswers()">Load Answers</button>
+      <div id="answers"></div>
+    </section>
+
+    <footer>
+      <button class="secondary" onclick="showAdmin()">View submitted answers</button>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
